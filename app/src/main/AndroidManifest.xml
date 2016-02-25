@@ -47,7 +47,7 @@
             android:name=".SwipeActivity"
             android:label="@string/title_activity_swipe"
             android:parentActivityName=".Main"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.dstrong.helloworld.Main" />
