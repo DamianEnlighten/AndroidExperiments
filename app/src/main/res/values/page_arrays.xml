@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="page_titles">
+        <item>@string/page_one_title</item>
+        <item>@string/page_two_title</item>
+        <item>@string/page_three_title</item>
+     </string-array>
+    <string-array name="page_titles_short">
+        <item>@string/page_one_title_short</item>
+        <item>@string/page_two_title_short</item>
+        <item>@string/page_three_title_short</item>
+    </string-array>
+    <string-array name="page_desc">
+        <item>@string/page_one_desc</item>
+        <item>@string/page_two_desc</item>
+        <item>@string/page_three_desc</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="page_one_title">I am page 1</string>
+    <string name="page_one_title_short">page 1</string>
+    <string name="page_one_desc">First page I am, please to do the swiping</string>
+    <string name="page_two_title">I am page 2</string>
+    <string name="page_two_title_short">page 2</string>
+    <string name="page_two_desc">Second but not forgotten, please to do the swiping</string>
+    <string name="page_three_title">I am page 3</string>
+    <string name="page_three_title_short">page 3</string>
+    <string name="page_three_desc">Why am last page, please to do the swiping</string>
+</resources>

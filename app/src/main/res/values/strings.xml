@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Experiments</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_experiment_two">Experiment 2</string>
+    <string name="action_experiment_one">Experiment 1</string>
+    <string name="action_exit">Exit</string>
+    <string name="title_activity_2">Activity 2</string>
+    <string name="activity2_text">this is 2</string>
+    <string name="title_activity_3">Activity 3</string>
+    <string name="activity3_text">This is 3</string>
+    <string name="action_toast">Toast Me</string>
+    <string name="action_toast_display">YEAH TOAST!</string>
+    <string name="action_close">Close</string>
+    <string name="action_button2">button 2</string>
+    <string name="action_button1">button 1</string>
+    <string name="action_provide_info">Provide Information</string>
+    <string name="action_take_picture">Take Picture</string>
+    <string name="action_send">Send</string>
+    <string name="label_select_course">Select Course</string>
+    <string name="placeholder_name">Your Name</string>
+    <string name="placeholder_email">Your Email</string>
+    <string name="action_done">Done</string>
+    <string name="radio_class_one">Android for .NET Devs: Getting Started</string>
+    <string name="radio_class_two">Android Programming with Intents</string>
+    <string name="radio_class_three">Improving UI Interaction with Android ActionBar</string>
+    <string name="radio_class_four">Android Async Programming and Services</string>
+    <string name="radio_class_five">Android 4.0 New Features</string>
+    <string name="title_Provide_info">Provide Information</string>
+    <string name="desc_label">Description:</string>
+    <string name="experiments_label">Experiments List</string>
+    <string name="title_activity_swipe">SwipeActivity</string>
+    <string name="action_experiment_three">Experiment 3</string>
+</resources>
