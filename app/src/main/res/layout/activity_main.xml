@@ -1,34 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_view"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_margin"
-    tools:context="com.example.dstrong.helloworld.Main"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/experiments_label"
-        android:id="@+id/experiments_label"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal" />
-
-    <fragment
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:name="com.example.dstrong.helloworld.TitlesFragment"
-        android:id="@+id/titlesFragment"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="4"/>
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/activity_margin"
+        android:orientation="vertical"
+        tools:context="com.example.dstrong.helloworld.Main">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:name="com.example.dstrong.helloworld.DescriptionFragment"
-        android:id="@+id/descFragment"
-        android:layout_weight="3" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/experiments_label"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="@string/experiments_label"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <fragment
+            android:id="@+id/titlesFragment"
+            android:name="com.example.dstrong.helloworld.TitlesFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="4" />
+
+        <fragment
+            android:id="@+id/descFragment"
+            android:name="com.example.dstrong.helloworld.DescriptionFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+    </LinearLayout>
+
+    <!--Drawer-->
+    <ListView
+        android:id="@+id/drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_margin"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/black"
+        >
+    </ListView>
+
+</android.support.v4.widget.DrawerLayout>
