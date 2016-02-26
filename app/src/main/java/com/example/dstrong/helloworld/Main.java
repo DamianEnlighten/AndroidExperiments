@@ -1,8 +1,10 @@
 package com.example.dstrong.helloworld;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -29,7 +31,7 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mNavDrawerHelper = new NavigationDrawerHelper();
-        mNavDrawerHelper.init(this,this);
+        mNavDrawerHelper.init(this, this);
     }
 
     @Override
@@ -59,6 +61,7 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
                 handled = super.onOptionsItemSelected(item);
                 break;
         }
+        mNavDrawerHelper.handleOnOptionsItemSelected(item);
         return handled;
     }
 
@@ -90,9 +93,23 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
         descFragment.setCourse(courseIndex);
     }
 
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         mNavDrawerHelper.handleSelect(position);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceBundle){
+        super.onPostCreate(savedInstanceBundle);
+
+        mNavDrawerHelper.syncSate();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration config){
+        mNavDrawerHelper.syncSate();
+        super.onConfigurationChanged(config);
     }
     //endregion
 }

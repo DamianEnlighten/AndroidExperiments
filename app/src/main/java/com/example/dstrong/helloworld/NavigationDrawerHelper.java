@@ -1,13 +1,18 @@
 package com.example.dstrong.helloworld;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -33,6 +38,20 @@ public class NavigationDrawerHelper {
         mDrawerListView.setOnItemClickListener(listener);
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mActivity = theActivity;
+        setupActionBar(theActivity);
+    }
+
+    private void setupActionBar(Activity theActivity){
+
+        android.support.v7.app.ActionBar actionBar =((AppCompatActivity)theActivity).getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        mDrawerToggle = new ActionBarDrawerToggle(
+                theActivity,
+                mDrawerLayout,
+                R.string.open_drawer_message,
+                R.string.close_drawer_message
+        );
     }
     public void handleSelect(int option){
         mDrawerLayout.closeDrawer(mDrawerListView);
@@ -52,5 +71,11 @@ public class NavigationDrawerHelper {
                 mActivity.startActivity(intent);
                 break;
         }
+    }
+    public void syncSate(){
+        mDrawerToggle.syncState();
+    }
+    public void handleOnOptionsItemSelected(MenuItem item){
+        mDrawerToggle.onOptionsItemSelected(item);
     }
 }

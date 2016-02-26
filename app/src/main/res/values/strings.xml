@@ -30,4 +30,6 @@
     <string name="experiments_label">Experiments List</string>
     <string name="title_activity_swipe">Experiment 3</string>
     <string name="action_experiment_three">Experiment 3</string>
+    <string name="open_drawer_message">Open</string>
+    <string name="close_drawer_message">Closed</string>
 </resources>
