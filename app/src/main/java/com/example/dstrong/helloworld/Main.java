@@ -10,15 +10,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Main extends AppCompatActivity implements OnCourseSelectorChangeListener{
+public class Main extends AppCompatActivity implements OnCourseSelectorChangeListener
+        , ListView.OnItemClickListener {
+
+    final static int EXPERIMENT_ONE=0;
+    final static int EXPERIMENT_TWO=1;
+    final static int EXPERIMENT_THREE=2;
+    NavigationDrawerHelper mNavDrawerHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mNavDrawerHelper = new NavigationDrawerHelper();
+        mNavDrawerHelper.init(this,this);
     }
 
     @Override
@@ -29,24 +40,20 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        boolean handled =false;
+        boolean handled=true;
         int id = item.getItemId();
-        switch(id){
+        switch (id) {
             case R.id.action_experiment_one:
                 onClickMenuExperimentOne(item);
-                handled=true;
                 break;
             case R.id.action_experiment_two:
                 onClickMenuExperimentTwo(item);
-                handled=true;
                 break;
             case R.id.action_experiment_three:
                 onClickMenuExperimentThree(item);
-                handled=true;
                 break;
             case R.id.action_exit:
                 onClickMenuExit(item);
-                handled=true;
                 break;
             default:
                 handled = super.onOptionsItemSelected(item);
@@ -66,10 +73,12 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
         Intent intent = new Intent(this, Activity2.class);
         startActivity(intent);
     }
+
     public void onClickMenuExperimentTwo(MenuItem item) {
         Intent intent = new Intent(this, Activity3.class);
         startActivity(intent);
     }
+
     public void onClickMenuExit(MenuItem item) {
         finish();
     }
@@ -79,6 +88,11 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
         FragmentManager fm = getFragmentManager();
         DescriptionFragment descFragment = (DescriptionFragment) fm.findFragmentById(R.id.descFragment);
         descFragment.setCourse(courseIndex);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mNavDrawerHelper.handleSelect(position);
     }
     //endregion
 }
