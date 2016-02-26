@@ -4,10 +4,12 @@
         <item>Experiment 1</item>
         <item>Experiment 2</item>
         <item>Experiment 3</item>
+        <item>Experiment 4</item>
     </array>
     <array name="course_descriptions">
         <item>Experiment shows binding events to buttons and maintaining state if the orientation changes</item>
         <item>Experiment shows how to handle child activities passing data back to parent activity with intents</item>
         <item>Experiment how to build an activity with fragments to swipe between them</item>
+        <item>Experiment uses intents to trigger phone activity</item>
     </array>
 </resources>

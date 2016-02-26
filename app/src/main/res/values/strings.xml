@@ -32,4 +32,5 @@
     <string name="action_experiment_three">Experiment 3</string>
     <string name="open_drawer_message">Open</string>
     <string name="close_drawer_message">Closed</string>
+    <string name="action_experiment_four">Experiment 4</string>
 </resources>

@@ -3,6 +3,7 @@ package com.example.dstrong.helloworld;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -70,6 +71,11 @@ public class NavigationDrawerHelper {
                 break;
             case 2:
                 intent = new Intent(mActivity, SwipeActivity.class);
+                mActivity.startActivity(intent);
+                break;
+            case 3:
+                intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:555.555.5555"));
                 mActivity.startActivity(intent);
                 break;
         }

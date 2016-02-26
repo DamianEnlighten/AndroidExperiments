@@ -6,6 +6,8 @@
         android:title="@string/action_experiment_two"/>
     <item android:id="@+id/action_experiment_three"
         android:title="@string/action_experiment_three"/>
+    <item android:id="@+id/action_experiment_four"
+        android:title="@string/action_experiment_four"/>
     <item android:id="@+id/action_exit"
         android:title="@string/action_exit"/>
 </menu>

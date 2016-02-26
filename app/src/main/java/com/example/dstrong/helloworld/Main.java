@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -24,6 +25,7 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
     final static int EXPERIMENT_ONE=0;
     final static int EXPERIMENT_TWO=1;
     final static int EXPERIMENT_THREE=2;
+    final static int EXPERIMENT_FOUR=4;
     NavigationDrawerHelper mNavDrawerHelper;
 
     @Override
@@ -54,6 +56,9 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
             case R.id.action_experiment_three:
                 onClickMenuExperimentThree(item);
                 break;
+            case R.id.action_experiment_four:
+                onClickMenuExperimentFour(item);
+                break;
             case R.id.action_exit:
                 onClickMenuExit(item);
                 break;
@@ -63,6 +68,12 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
         }
         mNavDrawerHelper.handleOnOptionsItemSelected(item);
         return handled;
+    }
+
+    private void onClickMenuExperimentFour(MenuItem item) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:555.555.5555"));
+        startActivity(intent);
     }
 
     private void onClickMenuExperimentThree(MenuItem item) {
