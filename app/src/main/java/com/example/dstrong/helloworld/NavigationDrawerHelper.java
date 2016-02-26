@@ -44,7 +44,9 @@ public class NavigationDrawerHelper {
     private void setupActionBar(Activity theActivity){
 
         android.support.v7.app.ActionBar actionBar =((AppCompatActivity)theActivity).getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar !=null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 theActivity,

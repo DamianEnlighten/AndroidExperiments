@@ -87,16 +87,14 @@ public class Activity3 extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        boolean handled =false;
+        boolean handled =true;
         int id = item.getItemId();
         switch(id){
             case R.id.action_toast:
                 onClickMenuToast(item);
-                handled=true;
                 break;
             case R.id.action_close:
                 onClickMenuClose(item);
-                handled=true;
                 break;
             default:
                 handled = super.onOptionsItemSelected(item);
