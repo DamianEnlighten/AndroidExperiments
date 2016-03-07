@@ -2,6 +2,7 @@ package com.example.dstrong.helloworld;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,25 +24,22 @@ public class Activity3 extends AppCompatActivity {
     static final int TAKE_PICTURE_REQUEST_CODE = 1010;
 
     //<editor-fold desc="Getters for view fields">
-    public TextView getClassNameTextView(){
-        if (mClassNameTextView == null)
-        {
+    public TextView getClassNameTextView() {
+        if (mClassNameTextView == null) {
             mClassNameTextView = (TextView) findViewById(R.id.classNameTextView);
         }
         return mClassNameTextView;
     }
 
-    public TextView getNameTextView(){
-        if (mNameTextView == null)
-        {
+    public TextView getNameTextView() {
+        if (mNameTextView == null) {
             mNameTextView = (TextView) findViewById(R.id.nameTextView);
         }
         return mNameTextView;
     }
 
-    public TextView getEmailTextView(){
-        if (mEmailTextView == null)
-        {
+    public TextView getEmailTextView() {
+        if (mEmailTextView == null) {
             mEmailTextView = (TextView) findViewById(R.id.emailTextView);
         }
         return mEmailTextView;
@@ -67,10 +66,17 @@ public class Activity3 extends AppCompatActivity {
 
     private void setupViews() {
         Button moreInformationButton = (Button) findViewById(R.id.provideInfoButton);
+        Button asyncButton = (Button) findViewById(R.id.asyncButton);
         moreInformationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Activity3.this.handleMoreInformationButton((Button) view);
+            }
+        });
+        asyncButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Activity3.this.asyncTaskClick((Button) view);
             }
         });
     }
@@ -81,15 +87,16 @@ public class Activity3 extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity3, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        boolean handled =true;
+        boolean handled = true;
         int id = item.getItemId();
-        switch(id){
+        switch (id) {
             case R.id.action_toast:
                 onClickMenuToast(item);
                 break;
@@ -109,7 +116,7 @@ public class Activity3 extends AppCompatActivity {
 
         switch (requestCode) {
             case PROVIDE_INFO_REQUEST_CODE:
-                handleProvideInfoResult(resultCode,result);
+                handleProvideInfoResult(resultCode, result);
                 break;
         }
     }
@@ -123,14 +130,13 @@ public class Activity3 extends AppCompatActivity {
             getClassNameTextView().setText(className);
             getNameTextView().setText(name);
             getEmailTextView().setText(email);
-        }
-        else{
-            Toast.makeText(this, toastText,Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, toastText, Toast.LENGTH_LONG).show();
         }
     }
 
     private void onClickMenuToast(MenuItem item) {
-        Toast toast = Toast.makeText(this,R.string.action_toast_display,Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(this, R.string.action_toast_display, Toast.LENGTH_LONG);
         toast.show();
     }
 
@@ -138,5 +144,48 @@ public class Activity3 extends AppCompatActivity {
         finish();
     }
 
+    private void asyncTaskClick(Button view) {
+        final ProgressBar pb = (ProgressBar) findViewById(R.id.bar);
+        initializeProgressBar(pb);
 
+        new AsyncTask<Integer,Integer,Void>() {
+            @Override
+            protected Void doInBackground(Integer... params) {
+                int count = params[0];
+                for (int i =0; i< count; i++)
+                {
+                    try {
+                        Thread.sleep(500,0);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    publishProgress(i);
+                }
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                //update progress bar etc
+                pb.setProgress(values[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                //after finished
+                cleanUpProgressBar(pb);
+                Toast.makeText(Activity3.this, "Async Task Completed", Toast.LENGTH_SHORT).show();
+            }
+        }.execute(30);
+    }
+
+    private void cleanUpProgressBar(ProgressBar pb) {
+        pb.setVisibility(View.INVISIBLE);
+    }
+
+    private void initializeProgressBar(ProgressBar pb) {
+        pb.setMax(30);
+        pb.setProgress(0);
+        pb.setVisibility(View.VISIBLE);
+    }
 }

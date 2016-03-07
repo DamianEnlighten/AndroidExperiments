@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -34,6 +35,8 @@ public class Main extends AppCompatActivity implements OnCourseSelectorChangeLis
         setContentView(R.layout.activity_main);
         mNavDrawerHelper = new NavigationDrawerHelper();
         mNavDrawerHelper.init(this, this);
+
+        StrictMode.enableDefaults();
     }
 
     @Override

@@ -33,4 +33,5 @@
     <string name="open_drawer_message">Open</string>
     <string name="close_drawer_message">Closed</string>
     <string name="action_experiment_four">Experiment 4</string>
+    <string name="action_async_task">Async Task</string>
 </resources>
